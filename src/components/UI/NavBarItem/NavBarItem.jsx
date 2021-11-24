@@ -1,11 +1,9 @@
 import { Fragment } from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import Chip from '@mui/material/Chip'
 import classes from './NavBarItem.module.css'
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
-import { Box } from '@mui/material'
 
 const NavBarItem = (props) => {
   const justIcon = props.justIcon || false;
@@ -13,9 +11,11 @@ const NavBarItem = (props) => {
   const newChip = props.newChip || false;
   const dropDown = props.dropDown || false;
   let bgColor = `transparent`;
+  let hoverColor = `#ffffff`
 
   if (variant === `contained`){
     bgColor = `#FFB81C`;
+    hoverColor = `#000000`
   }
 
 
@@ -29,7 +29,11 @@ const NavBarItem = (props) => {
           </IconButton>
           :
           <Button className={`${classes.button}`} variant={`${variant}`}
-                  sx={{ textTransform: `none`, backgroundColor: bgColor, ml: 1}} color={`inherit`}>
+                  sx={{ textTransform: `none`,
+                    backgroundColor: bgColor,
+                    ml: 1,
+                    '&:hover': {backgroundColor: `#FFB81C`, color: hoverColor}
+                  }} color={`inherit`}>
             <div style={{ display: `flex` }}>
               {props.children}
               {
